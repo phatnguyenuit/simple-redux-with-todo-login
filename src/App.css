@@ -1,45 +1,12 @@
-.container {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    height: 100%;
-}
-
-.content {
-    flex-grow: 2;
-}
-
-.sidebar {
-    flex-grow: 1;
-}
-
-.line {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: baseline;
-    margin: 10px 10px;
-}
-
-.line-center {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin: 10px 10px;
-}
-
 .column {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
+	display: flex;
+	flex-flow: column wrap;
 }
-
 .right {
     margin-left: auto;
     margin-right: 10px;
 }
 
-.ml32 {
-    margin-left: 32px;
+.mt16 {
+    margin-top: 16px;
 }
