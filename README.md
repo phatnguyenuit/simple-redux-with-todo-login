@@ -5,10 +5,11 @@ This is a simple example of todo react web app using redux state management libr
 
 ## Main features
 
-* User login `<Done>`
-* Manage todo list for each user
-* Manage router in redux with `connected-react-router` and `history`
-* Keep localStorage when using refresh by `redux-persist`
+* [x] User login.
+* [ ] Manage todo list for each user.
+* [ ] Manage todo list app with `react-router-dom`.
+* [ ] Manage router in redux with `connected-react-router` and `history`.
+* [ ] Keep localStorage when using refresh by `redux-persist`.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
