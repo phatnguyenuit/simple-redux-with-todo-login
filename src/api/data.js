@@ -5,22 +5,35 @@ export const prefixIdTodo = 'TODO_';
 export const todos = [
 	{
 		id: uniqueId(prefixIdTodo),
-		description: 'Learn React'
+		description: 'Learn React',
+		status: 'finished',
+		tags: ['frontend', 'api']
 	},
 	
 	{
 		id: uniqueId(prefixIdTodo),
-		description: 'Learn Java'
+		description: 'Learn Java',
+		status: 'finished',
+		tags: ['backend', 'api']
 	},
 	{
 		id: uniqueId(prefixIdTodo),
-		description: 'Learn Angular 4'
+		description: 'Learn Angular 4',
+		status: 'not_start',
+		tags: ['frontend', 'api']
 	},
 	{
 		id: uniqueId(prefixIdTodo),
-		description: 'Code login feature'
+		description: 'Code login feature',
+		status: 'canceled',
+		tags: ['backend', 'api']
 	},
-
+	{
+		id: uniqueId(prefixIdTodo),
+		description: 'Sleeping...',
+		status: 'pending',
+		tags: ['issue']
+	},
 ]
 
 
@@ -28,52 +41,75 @@ export const tags = [
 	{
 		id: 1,
 		icon: 'tag_icon',
-		name: 'Frontend'
+		name: 'frontend',
+		display: 'Frontend',
+		active: false,
 	},
 	
 	{
 		id: 2,
 		icon: 'tag_icon',
-		name: 'Backend'
+		name: 'backend',
+		display: 'Backend',
+		active: false,
 	},
 	{
 		id: 3,
 		icon: 'tag_icon',
-		name: 'API'
+		name: 'api',
+		display: 'API',
+		active: false,
 	},
 	
 	{
 		id: 4,
 		icon: 'tag_icon',
-		name: 'Issue'
+		name: 'issue',
+		display: 'Issue',
+		active: false,
 	},
 
 
 ]
 
+const prefixIdFilter = 'FILTER_';
 export const filters = [
 	{
-		id: 1,
+		id: uniqueId(prefixIdFilter),
 		icon: 'filter_icon',
-		name: 'Pending'
+		name: 'all',
+		display: 'All',
+		active: true,
+	},
+	{
+		id: uniqueId(prefixIdFilter),
+		icon: 'fa-spiner',
+		name: 'pending',
+		display: 'Pending',
+		active: false,
 	},
 	
 	{
-		id: 2,
+		id: uniqueId(prefixIdFilter),
 		icon: 'filter_icon',
-		name: 'Not start'
+		name: 'not_start',
+		display: 'Not start',
+		active: false,
 	},
 	{
-		id: 3,
+		id: uniqueId(prefixIdFilter),
 		icon: 'filter_icon',
-		name: 'Finished'
+		name: 'finished',
+		display: 'Finished',
+		active: false,
 	},
 	{
-		id: 4,
+		id: uniqueId(prefixIdFilter),
 		icon: 'filter_icon',
-		name: 'Canceled'
+		name: 'canceled',
+		display: 'Canceled',
+		active: false,
 	},
-
 ]
 
 export const users = [

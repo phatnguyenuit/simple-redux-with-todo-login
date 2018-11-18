@@ -5,6 +5,8 @@ import {
 	ACTION_LOGIN_FAIL,
 	ACTION_LOGOUT,
 	ACTION_ADD_TODO,
+	ACTION_TOGGLE_FILTER,
+	ACTION_TOGGLE_TAG,
 } from './constants'
 
 //Fake user
@@ -60,13 +62,34 @@ export const actionAddTodo = ( description ) => {
 	if (description) {
 		todo = {
 			id: uniqueId(prefixIdTodo),
-			description
+			description,
+			status: 'not_start'
 		}
 	}
 	return {
 		type: ACTION_ADD_TODO,
 		payload: {
 			todo
+		}
+	}
+}
+
+/* Part 3:  Filter action creator */
+export const actionToggleFilter = ( filter ) => {
+	return {
+		type: ACTION_TOGGLE_FILTER,
+		payload: {
+			activeFilter: filter
+		}
+	}
+}
+
+/* Part 4: Tag action creator */
+export const actionToggleTag = ( tag ) => {
+	return {
+		type: ACTION_TOGGLE_TAG,
+		payload: {
+			activeTag: tag
 		}
 	}
 }

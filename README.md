@@ -6,6 +6,7 @@ This is a simple example of todo react web app using redux state management libr
 
 * [x] User login.
 * [x] Create Todo modal feature.
+* [x] Allow to use filter and tag to get filtered todos.
 * [ ] Manage todo list for each user.
 * [ ] Manage todo list app with `react-router-dom`.
 * [ ] Manage router in redux with `connected-react-router` and `history`.

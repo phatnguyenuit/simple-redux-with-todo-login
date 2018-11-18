@@ -37,7 +37,7 @@ const AddToDo = ({ dispatch, error }) => {
 						<div className="modal-body">
 							<form>
 								<div className="form-group">
-									<label htmlFor="description" className="col-form-label">Description:</label>
+									<label htmlFor="description" className="col-form-label text-left">Description:</label>
 									<textarea className="form-control" id="description" ref={description => descriptionEle = description} />
 								</div>
 								{error &&
@@ -48,13 +48,13 @@ const AddToDo = ({ dispatch, error }) => {
 							</form>
 						</div>
 						<div className="modal-footer">
-							<button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
 							<button type="button" className="btn btn-primary" onClick={
 								e => {
 									e.preventDefault();
 									handleAddTodo(descriptionEle, dispatch);
 								}
-							}>Save changes</button>
+							}>Add</button>
+							<button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>

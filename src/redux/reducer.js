@@ -6,10 +6,13 @@ import {
 	ACTION_LOGIN_FAIL,
 	ACTION_LOGOUT,
 	// todo
-	ACTION_LOAD_TODO,
 	ACTION_ADD_TODO,
+	// filter
+	ACTION_TOGGLE_FILTER,
+	//  tag
+	ACTION_TOGGLE_TAG,
 } from './constants'
-import { todos } from '../api/data';
+import { todos, filters, tags } from '../api/data';
 
 // Boottrap js lib
 import $ from 'jquery';
@@ -23,7 +26,7 @@ const initialLoginState = {
 	isLoading: false,
 }
 
-const loginReducer = (prevState=initialLoginState, action) => {
+export const loginReducer = (prevState=initialLoginState, action) => {
 	switch (action.type) {
 		case ACTION_LOGIN_PENDING:
 			return {
@@ -72,22 +75,8 @@ const initialTodoState = {
 	error: '',
 }
 
-const getTodos = (todos, todoIds) => {
-	return todos.filter( todo => todoIds.indexOf(todo.id));
-}
-
-const todoReducer = (prevState=initialTodoState, action) => {
+export const todoReducer = (prevState=initialTodoState, action) => {
 	switch (action.type) {
-		case ACTION_LOAD_TODO:{
-			const { visibleTodoIds } = action.payload;
-			const { todos } = prevState;
-			const filteredTodos = getTodos(todos, visibleTodoIds)
-			return {
-				...prevState,
-				visibleTodoIds,
-				visibleTodos: filteredTodos
-			}
-		}
 		case ACTION_ADD_TODO:{
 			const { todo } = action.payload;
 			if ( todo ) {
@@ -128,7 +117,76 @@ const todoReducer = (prevState=initialTodoState, action) => {
 	}
 }
 
+/* Part 3: Filter Reducer */
+const initFilterState = {
+	filters,
+	activeFilter: filters[0].name
+}
+export const filterReducer = ( prevState=initFilterState, action ) => {
+	switch ( action.type) {
+		case ACTION_TOGGLE_FILTER:{
+			const { activeFilter } = action.payload;
+			const { filters } = prevState;
+			const updatedFilters = filters.map(filter => {
+				let active = false;
+				if (filter.name === activeFilter){
+					active = true;
+				}
+				return {
+					...filter,
+					active
+				}
+			});
+			return {
+				...prevState,
+				activeFilter,
+				filters: updatedFilters
+			}
+		}
+		default:
+			return {
+				...prevState,
+			}
+	}
+}
+
+/* Part 4: Tag Reducer */
+const initTagState = {
+	tags,
+	activeTag: ''
+}
+export const tagReducer = ( prevState=initTagState, action ) => {
+	switch ( action.type) {
+		case ACTION_TOGGLE_TAG:{
+			const { activeTag } = action.payload;
+			const prevActiveTag = prevState.activeTag;
+			const { tags } = prevState;
+			const updatedTags = tags.map(tag => {
+				let active = false;
+				if (tag.name == activeTag && !tag.active){
+					active = true;
+				}
+				return {
+					...tag,
+					active
+				}
+			});
+			return {
+				...prevState,
+				activeTag: prevActiveTag == activeTag ? '' : activeTag,
+				tags: updatedTags
+			}
+		}
+		default:
+			return {
+				...prevState,
+			}
+	}
+}
+
 export default combineReducers({
 	loginReducer,
 	todoReducer,
+	filterReducer,
+	tagReducer,
 });

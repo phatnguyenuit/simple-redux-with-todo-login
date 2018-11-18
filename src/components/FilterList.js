@@ -1,11 +1,12 @@
 import React from 'react';
-import Filter from './Filter';
+import ConnectedFilter from '../container/ConnectedFilter';
 
 export default ({ filters }) => {
+	// console.log('Render filter list');
 	return (
 		<ul className="list-unstyled ml-3">
 			{
-				filters.map(filter => <Filter key={filter.id} {...filter} />)
+				filters.map(filter => <ConnectedFilter key={filter.id} {...filter} />)
 			}
 		</ul>
 	)
