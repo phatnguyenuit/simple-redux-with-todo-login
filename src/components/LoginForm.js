@@ -36,7 +36,7 @@ export default ({ dispatch, error, isLoading }) => {
 				</div>
 			}
 			<div className="form-group">
-				<button type="submit" className="btn btn-primary">{isLoading ? 'Loadingggg...' : 'Login'}</button>
+				<button type="submit" className="btn btn-primary">{isLoading ? 'Wait...' : 'Login'}</button>
 			</div>
 		</form>
 	)

@@ -2,10 +2,10 @@
 
 This is a simple example of todo react web app using redux state management library. Including synchronous and asynchronous action with router management.
 
-
 ## Main features
 
 * [x] User login.
+* [x] Create Todo modal feature.
 * [ ] Manage todo list for each user.
 * [ ] Manage todo list app with `react-router-dom`.
 * [ ] Manage router in redux with `connected-react-router` and `history`.

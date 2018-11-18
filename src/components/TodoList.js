@@ -1,6 +1,6 @@
 import React from 'react';
 import Todo from './Todo'
-export default ({todos}) => (
+export default ({ visibleTodos }) => (
 	<div className="table-responsive">
 		<table className="table table-striped table-hover">
 			<thead>
@@ -16,7 +16,7 @@ export default ({todos}) => (
 			</thead>
 			<tbody>
 				{
-					todos.map( todo => <Todo key={todo.id} {...todo} />)
+					visibleTodos.map( todo => <Todo key={todo.id} {...todo} />)
 				}
 			</tbody>
 		</table>

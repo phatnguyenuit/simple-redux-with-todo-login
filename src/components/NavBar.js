@@ -1,6 +1,7 @@
 import React from 'react';
+import { actionLogout } from '../redux/actionCreator';
 
-export default ({user}) => {
+export default ({dispatch, user}) => {
 	const {name, icon} = user;
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,9 +33,8 @@ export default ({user}) => {
 								<div className="dropdown-divider"></div>
 								<a className="dropdown-item btn btn-danger" role="button"
 								 	onClick={e => {
-										//  Because reloading page it will be refreshed.
 										e.preventDefault();
-										window.location.reload();
+										dispatch(actionLogout());
 								}}>Log Out</a>
 							</div>
 						</li>

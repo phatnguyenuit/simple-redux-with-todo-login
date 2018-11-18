@@ -1,20 +1,23 @@
 import null_icon from '../static/img/null_icon.png';
+import { uniqueId } from 'lodash';
+
+export const prefixIdTodo = 'TODO_';
 export const todos = [
 	{
-		id: 1,
+		id: uniqueId(prefixIdTodo),
 		description: 'Learn React'
 	},
 	
 	{
-		id: 2,
+		id: uniqueId(prefixIdTodo),
 		description: 'Learn Java'
 	},
 	{
-		id: 3,
+		id: uniqueId(prefixIdTodo),
 		description: 'Learn Angular 4'
 	},
 	{
-		id: 4,
+		id: uniqueId(prefixIdTodo),
 		description: 'Code login feature'
 	},
 
@@ -58,7 +61,7 @@ export const filters = [
 	{
 		id: 2,
 		icon: 'filter_icon',
-		name: 'Doesn\'t start'
+		name: 'Not start'
 	},
 	{
 		id: 3,

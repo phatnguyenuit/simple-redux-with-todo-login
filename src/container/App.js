@@ -5,9 +5,9 @@ import TodoPage from '../page/TodoPage';
 
 import { connect } from 'react-redux';
 
-const App = ({ user }) => (
+const App = ({ dispatch, user }) => (
 	<div className="container-fluid">
-		<NavBar user={user} />
+		<NavBar user={user} dispatch={dispatch}/>
 		{!user ? 
 			<LoginPage /> : <TodoPage />
 		}

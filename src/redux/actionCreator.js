@@ -1,14 +1,16 @@
+import { uniqueId } from 'lodash';
 import { 
 	ACTION_LOGIN_PENDING, 
 	ACTION_LOGIN_SUCCESS,
 	ACTION_LOGIN_FAIL,
 	ACTION_LOGOUT,
+	ACTION_ADD_TODO,
 } from './constants'
 
 //Fake user
-import { users } from '../api/data';
+import { users, prefixIdTodo } from '../api/data';
 
-/* Step 1: Login action creator */
+/* Part 1: Login action creator */
 const actionLoginStart = () => ({
 	type: ACTION_LOGIN_PENDING
 })
@@ -50,4 +52,21 @@ export const actionLogout = () => ({
 	type: ACTION_LOGOUT
 })
 
-/* End Step 1 */
+/* End Part 1 */
+
+/* Part 2: Todo action creator */
+export const actionAddTodo = ( description ) => {
+	let todo = false;
+	if (description) {
+		todo = {
+			id: uniqueId(prefixIdTodo),
+			description
+		}
+	}
+	return {
+		type: ACTION_ADD_TODO,
+		payload: {
+			todo
+		}
+	}
+}
