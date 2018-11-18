@@ -6,12 +6,21 @@ import TodoPage from '../page/TodoPage';
 import { connect } from 'react-redux';
 
 const App = ({ dispatch, user }) => (
-	<div className="container-fluid">
-		<NavBar user={user} dispatch={dispatch}/>
-		{!user ? 
-			<LoginPage /> : <TodoPage />
-		}
-	</div>
+	<React.Fragment>
+		<header>
+			<NavBar user={user} dispatch={dispatch} />
+		</header>
+		<main className="container-fluid" role="main">
+			{!user ?
+				<LoginPage /> : <TodoPage />
+			}
+		</main>
+		<footer id="footer">
+			<div className="container">
+				Copyright Phat Nguyen
+			</div>
+		</footer>
+	</React.Fragment>
 )
 
 const mapStateToProps = state => {

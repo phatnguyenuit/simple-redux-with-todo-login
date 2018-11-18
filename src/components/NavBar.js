@@ -4,7 +4,7 @@ import { actionLogout } from '../redux/actionCreator';
 export default ({dispatch, user}) => {
 	const {name, icon} = user;
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light">
+		<nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 			<a className="navbar-brand" href="#">
 				<h3>Todo list</h3>
 			</a>

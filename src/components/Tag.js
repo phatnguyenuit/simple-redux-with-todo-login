@@ -1,19 +1,18 @@
 import React from 'react';
 import { actionToggleTag } from '../redux/actionCreator';
 
-export default ({ dispatch, icon, display, name, active }) => {
+export default ({ dispatch, display, name, active }) => {
 	return (
 		<li>
-			<button
-				className={"btn btn-block mb-1 text-left " + (active ? "btn-success" : "btn-default")}
+			<span
+				className={"mb-1 text-left badge badge-pill pointer " + (active ? "badge-success" : "badge-secondary")}
 				onClick={e => {
 					e.preventDefault();
 					dispatch(actionToggleTag(name));
 				}}
 			>
-				<span className={"fa " + icon} />
-				<span className="ml-2">{display}</span>
-			</button>
+				<span>{display}</span>
+			</span>
 		</li>
 	)
 }

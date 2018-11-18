@@ -5,7 +5,7 @@ import ConnectedFilterList from '../container/ConnectedFilterList';
 import ConnectedTagList from '../container/ConnectedTagList';
 
 export default () => (
-	<div className="row" id="content">
+	<div className="row mt-6" id="content">
 		<div className="col-lg-2 col-sm-4" id="sidebar">
 			<div className="text-center">
 				<AddToDo />

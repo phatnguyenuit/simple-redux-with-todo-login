@@ -36,7 +36,7 @@ const AddToDo = ({ dispatch, error }) => {
 						</div>
 						<div className="modal-body">
 							<form>
-								<div className="form-group">
+								<div className="form-group text-left">
 									<label htmlFor="description" className="col-form-label text-left">Description:</label>
 									<textarea className="form-control" id="description" ref={description => descriptionEle = description} />
 								</div>

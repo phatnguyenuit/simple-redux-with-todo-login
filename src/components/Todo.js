@@ -21,13 +21,13 @@ const tagDict = tags.reduce(
 export default ({id, description, status, tags}) => {
 	const sequence = id.split(prefixIdTodo)[1];
 	const statusStr = filterDict[status];
-	const tagsDisplayArr = tags.map( tag => tagDict[tag]);
-	const tagsStr = tagsDisplayArr.join(", ");
 	return (
 		<tr>
 			<th scope="row">{sequence}</th>
 			<td>{description}</td>
-			<td>{tagsStr}</td>
+			<td>{
+				tags.map(tag =>  <span className="text-left badge badge-pill badge-secondary mr-1">{tagDict[tag]}</span>)
+			}</td>
 			<td></td>
 			<td></td>
 			<td></td>

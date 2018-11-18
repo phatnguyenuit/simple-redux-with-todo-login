@@ -1,5 +1,7 @@
 import React from 'react';
 import { actionToggleFilter } from '../redux/actionCreator';
+import { Icon } from 'react-fa';
+
 export default ({ dispatch, name, icon, display, active }) => {
 	// console.log('Render filter item');
 	return (
@@ -11,7 +13,7 @@ export default ({ dispatch, name, icon, display, active }) => {
 					dispatch(actionToggleFilter(name));
 				}}
 			>
-				<span className={"fa " + icon} />
+				<Icon name={icon} />
 				<span className="ml-2">{display}</span>
 			</button>
 		</li>

@@ -76,14 +76,14 @@ const prefixIdFilter = 'FILTER_';
 export const filters = [
 	{
 		id: uniqueId(prefixIdFilter),
-		icon: 'filter_icon',
+		icon: 'indent',
 		name: 'all',
 		display: 'All',
 		active: true,
 	},
 	{
 		id: uniqueId(prefixIdFilter),
-		icon: 'fa-spiner',
+		icon: 'spinner',
 		name: 'pending',
 		display: 'Pending',
 		active: false,
@@ -91,21 +91,21 @@ export const filters = [
 	
 	{
 		id: uniqueId(prefixIdFilter),
-		icon: 'filter_icon',
+		icon: 'anchor',
 		name: 'not_start',
 		display: 'Not start',
 		active: false,
 	},
 	{
 		id: uniqueId(prefixIdFilter),
-		icon: 'filter_icon',
+		icon: 'check-square',
 		name: 'finished',
 		display: 'Finished',
 		active: false,
 	},
 	{
 		id: uniqueId(prefixIdFilter),
-		icon: 'filter_icon',
+		icon: 'trash',
 		name: 'canceled',
 		display: 'Canceled',
 		active: false,

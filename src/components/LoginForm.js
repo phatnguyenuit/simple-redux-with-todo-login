@@ -12,11 +12,11 @@ const actionSubmitLogin = (e, dispatch) => {
 
 export default ({ dispatch, error, isLoading }) => {
 	return (
-		<form onSubmit={e => {
-			e.preventDefault();
-			actionSubmitLogin(e, dispatch);
-		}}>
-			<h2>Login</h2>
+		<form 
+			onSubmit={e => {
+				e.preventDefault();
+				actionSubmitLogin(e, dispatch);
+			}}>
 			<div className="form-group">
 				<label htmlFor="user_id">User Name:</label>
 				<input className="form-control" name="userName" />
