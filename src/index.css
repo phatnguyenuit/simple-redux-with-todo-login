@@ -36,9 +36,10 @@ code {
 
 #sidebar {
 	overflow:auto;
-	padding-bottom:150px; /* this needs to be bigger than footer height*/
+	padding-bottom:100px;
+	height: 100vh;
 }
 
-.mt-6 {
-	margin-top: 6rem;
+.my-mt-5 {
+	margin-top: 5.5rem!important;
 }

@@ -6,6 +6,10 @@ import {
 	ACTION_LOGOUT,
 } from '../constants'
 
+import { actionLoadTodo } from './todoAction'
+
+import { push } from 'connected-react-router';
+
 //Fake user
 import { users } from '../../api/data';
 const actionLoginStart = () => ({
@@ -38,7 +42,9 @@ export const actionLogin = (login, password) => dispatch => {
 				reject(new Error('Wrong username or passwrod!'));
 		}
 	).then(loginUser => {
-		dispatch(actionLoginSuccess(loginUser))
+		dispatch(actionLoginSuccess(loginUser));
+		dispatch(push('/'));
+		dispatch(actionLoadTodo(loginUser.id));
 	})
 	.catch(error => {
 		dispatch(actionLoginFail(error.message));

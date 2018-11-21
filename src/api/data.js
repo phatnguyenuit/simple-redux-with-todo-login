@@ -5,31 +5,36 @@ export const prefixIdTodo = 'TODO_';
 export const todos = [
 	{
 		id: uniqueId(prefixIdTodo),
+		user_id: 1,
 		description: 'Learn React',
 		status: 'finished',
-		tags: ['frontend', 'api']
+		tags: ['frontend', 'api'],
 	},
 	
 	{
 		id: uniqueId(prefixIdTodo),
+		user_id: 1,
 		description: 'Learn Java',
 		status: 'finished',
 		tags: ['backend', 'api']
 	},
 	{
 		id: uniqueId(prefixIdTodo),
+		user_id: 1,
 		description: 'Learn Angular 4',
 		status: 'not_start',
 		tags: ['frontend', 'api']
 	},
 	{
 		id: uniqueId(prefixIdTodo),
+		user_id: 1,
 		description: 'Code login feature',
 		status: 'canceled',
 		tags: ['backend', 'api']
 	},
 	{
 		id: uniqueId(prefixIdTodo),
+		user_id: 2,
 		description: 'Sleeping...',
 		status: 'pending',
 		tags: ['issue']

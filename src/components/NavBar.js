@@ -1,8 +1,32 @@
 import React from 'react';
-import { authenticationAction } from '../redux/action';
+import { Link } from 'react-router-dom';
+import { authenticationAction, todoAction } from '../redux/action';
 
-export default ({dispatch, user}) => {
+export default props => {
+	const {dispatch, user} = props;
 	const {name, icon} = user;
+
+	const searchTodo = query => {
+		dispatch(
+			todoAction.actionSearchTodo(query)
+	   );
+	}	
+	const handleSearch = e => {
+		e.preventDefault();
+		let query = e.target.searchTodo.value.trim();
+		searchTodo(query);
+	}
+	const handleOnChange = e => {
+		e.preventDefault();
+		let query = e.target.value.trim();
+		searchTodo(query);
+	}
+	const logout = e => {
+		e.preventDefault();
+		dispatch(
+			authenticationAction.actionLogout()
+		);
+	}
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 			<a className="navbar-brand" href="#">
@@ -15,10 +39,10 @@ export default ({dispatch, user}) => {
 			<div className="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul className="navbar-nav mr-auto">
 					<li className="nav-item active">
-						<a className="nav-link" href="#">Home</a>
+						<Link className="nav-link" to="/">Home</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">About</a>
+						<Link className="nav-link" to="/about">About</Link>
 					</li>
 					{
 						user &&
@@ -28,22 +52,17 @@ export default ({dispatch, user}) => {
 								<span>{name}</span>
 							</a>
 							<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a className="dropdown-item" href="#">Action</a>
-								<a className="dropdown-item" href="#">Another action</a>
+								<Link className="dropdown-item" to="/not-match">Not match</Link>
+								<Link className="dropdown-item" to="/another-not-match">Another not match</Link>
 								<div className="dropdown-divider"></div>
 								<a className="dropdown-item btn btn-danger" role="button"
-								 	onClick={e => {
-										e.preventDefault();
-										dispatch(
-											authenticationAction.actionLogout()
-										);
-								}}>Log Out</a>
+								 	onClick={logout}>Log Out</a>
 							</div>
 						</li>
 					}
 				</ul>
-				<form className="form-inline my-2 my-lg-0">
-					<input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+				<form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
+					<input className="form-control mr-sm-2" type="text" name="searchTodo" onChange={handleOnChange}/>
 					<button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
 			</div>

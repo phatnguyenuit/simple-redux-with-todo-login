@@ -14,7 +14,7 @@ export default ( prevState=initTagState, action ) => {
 			const { tags } = prevState;
 			const updatedTags = tags.map(tag => {
 				let active = false;
-				if (tag.name == activeTag && !tag.active){
+				if (tag.name === activeTag && !tag.active){
 					active = true;
 				}
 				return {
@@ -24,7 +24,7 @@ export default ( prevState=initTagState, action ) => {
 			});
 			return {
 				...prevState,
-				activeTag: prevActiveTag == activeTag ? '' : activeTag,
+				activeTag: prevActiveTag === activeTag ? '' : activeTag,
 				tags: updatedTags
 			}
 		}

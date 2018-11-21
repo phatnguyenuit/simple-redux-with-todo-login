@@ -3,13 +3,13 @@ import TodoList from '../components/TodoList'
 import { getTodosByFilter, getTodosByTag } from '../helper/todo'
 
 const mapStateToProps = state => {
-	const { todos } = state.todoReducer;
+	const { visibleTodos } = state.todoReducer;
 	const { activeFilter } = state.filterReducer;
 	const { activeTag } = state.tagReducer;
-	const filteredTodos = getTodosByFilter(todos, activeFilter);
-	const visibleTodos = getTodosByTag( filteredTodos, activeTag);
+	const filteredTodos = getTodosByFilter(visibleTodos, activeFilter);
+	const new_visibleTodos = getTodosByTag( filteredTodos, activeTag);
 	return {
-		visibleTodos,
+		visibleTodos: new_visibleTodos,
 	}
 }
 export default connect(mapStateToProps)(TodoList);

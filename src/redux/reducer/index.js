@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
-import loginReducer from './loginReducer'
+import authenticationReducer from './authenticationReducer'
 import todoReducer from './todoReducer'
 import filterReducer from './filterReducer'
 import tagReducer from './tagReducer'
 
+import { connectRouter } from 'connected-react-router'
 
-
-export default combineReducers({
-	loginReducer,
+export default ( history ) => combineReducers({
+	router: connectRouter(history),
+	authenticationReducer,
 	todoReducer,
 	filterReducer,
 	tagReducer,
