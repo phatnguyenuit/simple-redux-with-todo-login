@@ -1,5 +1,5 @@
 import React from 'react';
-import { actionToggleFilter } from '../redux/actionCreator';
+import { filterAction } from '../redux/action';
 import { Icon } from 'react-fa';
 
 export default ({ dispatch, name, icon, display, active }) => {
@@ -10,7 +10,9 @@ export default ({ dispatch, name, icon, display, active }) => {
 				className={"btn btn-block mb-1 text-left " + (active ? "btn-success" : "btn-default")}
 				onClick={e => {
 					e.preventDefault();
-					dispatch(actionToggleFilter(name));
+					dispatch(
+						filterAction.actionToggleFilter(name)
+					);
 				}}
 			>
 				<Icon name={icon} />

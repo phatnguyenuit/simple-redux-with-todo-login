@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import TodoList from '../components/TodoList';
-import { getTodosByFilter, getTodosByTag } from '../helper/todo';
+import { connect } from 'react-redux'
+import TodoList from '../components/TodoList'
+import { getTodosByFilter, getTodosByTag } from '../helper/todo'
 
 const mapStateToProps = state => {
 	const { todos } = state.todoReducer;

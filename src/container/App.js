@@ -1,9 +1,9 @@
-import React from 'react';
-import NavBar from '../components/NavBar';
-import LoginPage from '../page/LoginPage';
-import TodoPage from '../page/TodoPage';
+import React from 'react'
+import NavBar from '../components/NavBar'
+import LoginPage from '../page/LoginPage'
+import TodoPage from '../page/TodoPage'
 
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 const App = ({ dispatch, user }) => (
 	<React.Fragment>

@@ -1,11 +1,11 @@
 import React from 'react';
-import { actionLogin } from '../redux/actionCreator';
+import { authenticationAction } from '../redux/action';
 
 const actionSubmitLogin = (e, dispatch) => {
 	const userName = e.target.userName.value.trim();
 	const userPassword = e.target.userPassword.value.trim();
 	dispatch(
-		actionLogin(userName, userPassword)
+		authenticationAction.actionLogin(userName, userPassword)
 	);
 }
 

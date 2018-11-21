@@ -1,13 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import { actionAddTodo } from '../redux/actionCreator'
+import { todoAction } from '../redux/action'
 
 const handleAddTodo = (descriptionEle, dispatch) => {
 	let description = descriptionEle.value.trim();
 	descriptionEle.value = '';
 	dispatch(
-		actionAddTodo(description)
+		todoAction.actionAddTodo(description)
 	);
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { actionLogout } from '../redux/actionCreator';
+import { authenticationAction } from '../redux/action';
 
 export default ({dispatch, user}) => {
 	const {name, icon} = user;
@@ -34,7 +34,9 @@ export default ({dispatch, user}) => {
 								<a className="dropdown-item btn btn-danger" role="button"
 								 	onClick={e => {
 										e.preventDefault();
-										dispatch(actionLogout());
+										dispatch(
+											authenticationAction.actionLogout()
+										);
 								}}>Log Out</a>
 							</div>
 						</li>
