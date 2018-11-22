@@ -1,5 +1,5 @@
 import React from 'react';
-import { authenticationAction, todoAction } from '../redux/action';
+import { authenticationAction } from '../redux/action';
 // import { push } from 'connected-react-router';
 
 const actionSubmitLogin = (e, dispatch) => {

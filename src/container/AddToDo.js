@@ -1,9 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import { todoAction } from '../redux/action'
-
-import { push } from 'connected-react-router'
 
 const handleAddTodo = (descriptionEle, dispatch) => {
 	let description = descriptionEle.value.trim();

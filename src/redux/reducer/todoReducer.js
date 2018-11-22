@@ -8,7 +8,7 @@ import { todos } from '../../api/data'
 
 // Boottrap js lib
 import $ from 'jquery';
-import Popper from 'popper.js';
+// import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
