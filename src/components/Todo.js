@@ -1,39 +1,65 @@
 import React from 'react';
-import { prefixIdTodo } from '../api/data';
-import { filters, tags } from '../api/data';
+import { Icon } from 'react-fa';
+import { capitalize, uniqueId } from 'lodash';
+import { prefixIdTodo, filters, tags } from '../api/data';
 
-import { uniqueId } from 'lodash'
 
 const filterDict = filters.reduce(
 	(fd, filter) => ({
-		...fd, 
-		[filter.name]:filter.display
+		...fd,
+		[filter.name]: {icon: filter.icon, displayStr: filter.display}
 	}),
 	{}
 );
 
 const tagDict = tags.reduce(
 	(td, tag) => ({
-		...td, 
-		[tag.name]:tag.display
+		...td,
+		[tag.name]: tag.display
 	}),
 	{}
 );
 
-export default ({id, description, status, tags}) => {
+const priority_classes = {
+	very_low: 'text-muted',
+	low: 'text-info',
+	normal: 'text-primary',
+	high: 'text-warning',
+	very_high: 'text-danger'
+}
+
+export default (props) => {
+	const { id, description, tags, priority, status, dispatch } = props;
+	console.log(dispatch);
 	const sequence = id.split(prefixIdTodo)[1];
-	const statusStr = filterDict[status];
+	const { icon } = filterDict[status];
+	const className = priority_classes[priority];
 	return (
 		<tr>
 			<th scope="row">{sequence}</th>
 			<td>{description}</td>
 			<td>{
-				tags.map(tag =>  <span className="text-left badge badge-pill badge-secondary mr-1" key={uniqueId(tag)}>{tagDict[tag]}</span>)
+				tags.map(tag => <span className="text-left badge badge-pill badge-secondary mr-1" key={uniqueId(tag)}>{tagDict[tag]}</span>)
 			}</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td data-status={status}>{statusStr}</td>
+			<td className={className}>{capitalize(priority).replace('_', ' ')}</td>
+			<td>
+				<div className="form-inline">
+				<div className="form-group">
+					<button className="btn btn-outline-danger mx-2 my-sm-0">Edit</button>
+				</div>
+				<div className="form-group">
+					<select className="form-control" id="sel1">
+						<option value="">Change Status</option>
+						{
+							Object.keys(filterDict).map(status => status !== 'all' && 
+								<option value={status} key={status}>{filterDict[status]['displayStr']}</option>
+							)
+						}
+					</select>
+				</div>
+				</div>
+			</td>
+			<td data-status={status}><Icon name={icon} /></td>
 		</tr>
 	)
 }

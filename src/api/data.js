@@ -8,6 +8,7 @@ export const todos = [
 		user_id: 1,
 		description: 'Learn React',
 		status: 'finished',
+		priority: 'very_high',
 		tags: ['frontend', 'api'],
 	},
 	
@@ -16,6 +17,7 @@ export const todos = [
 		user_id: 1,
 		description: 'Learn Java',
 		status: 'finished',
+		priority: 'low',
 		tags: ['backend', 'api']
 	},
 	{
@@ -23,6 +25,7 @@ export const todos = [
 		user_id: 1,
 		description: 'Learn Angular 4',
 		status: 'not_start',
+		priority: 'normal',
 		tags: ['frontend', 'api']
 	},
 	{
@@ -30,6 +33,7 @@ export const todos = [
 		user_id: 1,
 		description: 'Code login feature',
 		status: 'canceled',
+		priority: 'low',
 		tags: ['backend', 'api']
 	},
 	{
@@ -37,6 +41,7 @@ export const todos = [
 		user_id: 2,
 		description: 'Sleeping...',
 		status: 'pending',
+		priority: 'very_low',
 		tags: ['issue']
 	},
 ]

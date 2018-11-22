@@ -2,8 +2,9 @@ import React from 'react';
 import { filterAction } from '../redux/action';
 import { Icon } from 'react-fa';
 
-export default ({ dispatch, name, icon, display, active }) => {
+export default (props) => {
 	// console.log('Render filter item');
+	const { dispatch, name, icon, display, active } = props;
 	return (
 		<li>
 			<button
