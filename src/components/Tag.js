@@ -1,7 +1,8 @@
 import React from 'react';
 import { tagAction } from '../redux/action';
 
-export default ({ dispatch, display, name, active }) => {
+export default (props) => {
+	const { dispatch, display, name, active } = props;
 	return (
 		<li>
 			<span

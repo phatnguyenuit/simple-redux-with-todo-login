@@ -15,12 +15,9 @@ export const getTodosByFilter = (todos, filter=false) => {
 export const getTodosByTags = (todos, tags=[]) => {
 	if (!tags.length) return todos;
 	return todos.filter( 
-		todo => {
-			if (todo.tags.length < tags.length) {
-				return tags.includes(...todo.tags)
-			}
-			return todo.tags.includes(...tags)
-		}
+		todo => tags.every(
+			tag => todo.tags.includes(tag)
+		)
 	);
 }
 

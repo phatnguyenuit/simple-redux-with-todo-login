@@ -7,13 +7,13 @@ import {
 	ACTION_LOGOUT,
 } from '../constants'
 
-const initialLoginState = {
+const initialState = {
 	user: false,
 	error: '',
 	isLoading: false,
 }
 
-export default (prevState=initialLoginState, action) => {
+export default (prevState=initialState, action) => {
 	switch (action.type) {
 		case ACTION_LOGIN_PENDING:
 			return {
@@ -40,10 +40,7 @@ export default (prevState=initialLoginState, action) => {
 		}
 		case ACTION_LOGOUT:{
 			return {
-				...prevState,
-				error: '',
-				isLoading: false,
-				user: false,
+				...initialState,
 			}
 		}
 		default:

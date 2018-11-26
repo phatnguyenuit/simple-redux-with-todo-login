@@ -30,7 +30,6 @@ const priority_classes = {
 
 export default (props) => {
 	const { id, description, tags, priority, status } = props;
-	// console.log(dispatch);
 	const sequence = id.split(prefixIdTodo)[1];
 	const { icon } = filterDict[status];
 	const className = priority_classes[priority];

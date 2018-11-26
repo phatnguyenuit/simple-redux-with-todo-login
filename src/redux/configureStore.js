@@ -12,10 +12,14 @@ import storage from 'redux-persist/lib/storage';
 
 export const history = createBrowserHistory();
 const rootReducer = createRootReducer(history);
+
 export const persistConfig = {
+	storage,
 	key:  'root',
 	stateReconciler: autoMergeLevel1,
-	storage
+	blacklist: ['router'],
+	serialize: true,
+	debug: true
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

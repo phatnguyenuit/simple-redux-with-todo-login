@@ -3,12 +3,11 @@ import {
 	ACTION_LOAD_TODO, 
 	ACTION_ADD_TODO, 
 	ACTION_SEARCH_TODO,
-} from '../constants'
-import { todos } from '../../api/data'
+} from '../constants';
+import { todos } from '../../api/data';
 
 // Boottrap js lib
 import $ from 'jquery';
-// import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 

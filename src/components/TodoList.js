@@ -1,7 +1,6 @@
 import React from 'react';
-import ConnectedTodo from '../container/ConnectedTodo';
-export default ({ visibleTodos, dispatch }) => {
-	// console.log(visibleTodos);
+import Todo from './Todo';
+export default ({ visibleTodos }) => {
 	return (
 		<div className="table-responsive">
 			<table className="table table-striped table-hover">
@@ -17,7 +16,7 @@ export default ({ visibleTodos, dispatch }) => {
 				</thead>
 				<tbody>
 					{
-						visibleTodos.map(todo => <ConnectedTodo key={todo.id} dispatch={dispatch} {...todo}/>)
+						visibleTodos.map(todo => <Todo key={todo.id}  {...todo}/>)
 					}
 				</tbody>
 			</table>

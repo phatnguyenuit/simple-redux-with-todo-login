@@ -1,6 +1,6 @@
 /* Part 3: Filter Reducer */
-import { ACTION_TOGGLE_FILTER } from '../constants'
-import { filters } from '../../api/data'
+import { ACTION_TOGGLE_FILTER } from '../constants';
+import { filters } from '../../api/data';
 
 const initialState = {
 	filters,

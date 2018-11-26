@@ -1,11 +1,12 @@
 import React from 'react';
-import ConnectedTag from '../container/ConnectedTag';
+import Tag from './Tag';
 
-export default ({ tags }) => {
+export default (props) => {
+	const { tags, dispatch } = props;
 	return (
 		<ul className="list-unstyled ml-3">
 			{
-				tags.map(tag => <ConnectedTag key={tag.id} {...tag} />)
+				tags.map(tag => <Tag key={tag.id} dispatch={dispatch} {...tag} />)
 			}
 		</ul>
 	)

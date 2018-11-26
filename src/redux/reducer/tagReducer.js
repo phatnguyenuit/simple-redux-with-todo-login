@@ -1,12 +1,14 @@
 /* Part 4: Tag Reducer */
-import { ACTION_TOGGLE_TAG } from '../constants'
-import { tags } from '../../api/data'
+import { 
+	ACTION_TOGGLE_TAG,
+} from '../constants';
+import { tags } from '../../api/data';
 
-const initState = {
+const initialState = {
 	tags,
 	activeTags: [],
 }
-export default ( prevState=initState, action ) => {
+export default ( prevState=initialState, action ) => {
 	switch ( action.type) {
 		case ACTION_TOGGLE_TAG:{
 			const { activeTag } = action.payload;

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { authenticationAction, todoAction } from '../redux/action';
 
+import { ACTION_RESET_STATE } from '../redux/constants';
+
 export default props => {
 	const { dispatch, user } = props;
 	const { name, icon } = user;
@@ -26,6 +28,7 @@ export default props => {
 		dispatch(
 			authenticationAction.actionLogout()
 		);
+		dispatch({type: ACTION_RESET_STATE})
 	}
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
