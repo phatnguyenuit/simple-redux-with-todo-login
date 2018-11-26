@@ -10,8 +10,11 @@ This is a simple example of todo react web app using redux state management libr
 * [x] Manage todo list for each user.
 * [x] Manage todo list app with `react-router-dom`.
 * [x] Manage router in redux with `connected-react-router` and `history`.
+* [x] Keep localStorage when using refresh by `redux-persist`.
+* [ ] Update information in action add todo `WIP`.
 * [ ] Allow to sort by todo and filter by priority.
-* [x] Keep localStorage when using refresh by `redux-persist` `<WIP>`.
+* [ ] Allow to add new tag.
+* [ ] Update content for about page.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
