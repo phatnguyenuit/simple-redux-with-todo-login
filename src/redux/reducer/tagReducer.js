@@ -2,29 +2,25 @@
 import { ACTION_TOGGLE_TAG } from '../constants'
 import { tags } from '../../api/data'
 
-const initTagState = {
+const initState = {
 	tags,
-	activeTag: ''
+	activeTags: [],
 }
-export default ( prevState=initTagState, action ) => {
+export default ( prevState=initState, action ) => {
 	switch ( action.type) {
 		case ACTION_TOGGLE_TAG:{
 			const { activeTag } = action.payload;
-			const prevActiveTag = prevState.activeTag;
 			const { tags } = prevState;
-			const updatedTags = tags.map(tag => {
-				let active = false;
-				if (tag.name === activeTag && !tag.active){
-					active = true;
+			const updatedTags = [...tags];
+			for (let tag of updatedTags){
+				if (tag.name === activeTag){
+					tag.active = !tag.active;
 				}
-				return {
-					...tag,
-					active
-				}
-			});
+			}
+			const updatedActiveTags = updatedTags.filter(tag => tag.active === true).map( tag => tag.name);
 			return {
 				...prevState,
-				activeTag: prevActiveTag === activeTag ? '' : activeTag,
+				activeTags: updatedActiveTags,
 				tags: updatedTags
 			}
 		}

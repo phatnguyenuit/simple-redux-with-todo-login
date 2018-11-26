@@ -12,7 +12,7 @@ import $ from 'jquery';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
-const initialTodoState = {
+const initialState = {
 	todoIds: [],
 	visibleTodoIds: [],
 	todos: [],
@@ -20,7 +20,7 @@ const initialTodoState = {
 	error: '',
 }
 
-export default (prevState=initialTodoState, action) => {
+export default (prevState=initialState, action) => {
 	switch (action.type) {
 		case ACTION_LOAD_TODO: {
 			const { user_id } = action.payload;

@@ -2,11 +2,11 @@
 import { ACTION_TOGGLE_FILTER } from '../constants'
 import { filters } from '../../api/data'
 
-const initFilterState = {
+const initialState = {
 	filters,
 	activeFilter: filters[0].name
 }
-export default ( prevState=initFilterState, action ) => {
+export default ( prevState=initialState, action ) => {
 	switch ( action.type) {
 		case ACTION_TOGGLE_FILTER:{
 			const { activeFilter } = action.payload;

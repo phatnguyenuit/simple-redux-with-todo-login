@@ -12,10 +12,15 @@ export const getTodosByFilter = (todos, filter=false) => {
 	);
 }
 
-export const getTodosByTag = (todos, tag='') => {
-	if (!tag) return todos;
+export const getTodosByTags = (todos, tags=[]) => {
+	if (!tags.length) return todos;
 	return todos.filter( 
-		todo => todo.tags.includes(tag)
+		todo => {
+			if (todo.tags.length < tags.length) {
+				return tags.includes(...todo.tags)
+			}
+			return todo.tags.includes(...tags)
+		}
 	);
 }
 
