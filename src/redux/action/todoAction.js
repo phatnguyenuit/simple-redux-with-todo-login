@@ -9,7 +9,8 @@ import {
 //Fake user
 import { prefixIdTodo } from '../../api/data';
 
-export const actionAddTodo = ( description ) => {
+export const actionAddTodo = ({ description, ...rest }) => {
+	console.log(rest);
 	let todo = false;
 	if (description) {
 		todo = {
