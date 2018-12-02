@@ -6,15 +6,27 @@ class InputTags extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tags: [],
+			tags: props.defaultTags || [],
 			value: '',
 		}
 	}
-	
-	componentDidUpdate() {
-		const { tags, value } = this.state;
-		const values = tags.length ? tags : [value];
-		this.props.setTagValues(values);
+
+	componentDidUpdate(prevProps, prevState) {
+		const { tags } = this.state;
+		const { tags: prevTags } = prevState;
+		let isDifferentTags = false;
+		if (!tags.length && !prevTags.length){
+			isDifferentTags = false;
+		}
+		else if (tags.length === prevTags.length){
+			isDifferentTags = tags.some(tag => !prevTags.includes(tag));
+		}
+		else{
+			isDifferentTags = true;
+		}
+		if (isDifferentTags) {
+			this.props.setTagValues(tags);
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {

@@ -131,3 +131,27 @@ export const users = [
 		password: 'tainguyen',
 	},
 ]
+
+export const priorityValues = [
+	{
+		value: 'normal',
+		name: 'Normal',
+	},
+	{
+		value: 'low',
+		name: 'Low',
+	},
+	{
+		value: 'very_low',
+		name: 'Very Low',
+	},
+	{
+		value: 'high',
+		name: 'High',
+	},
+	{
+		value: 'very_high',
+		name: 'Very High',
+	},
+
+]

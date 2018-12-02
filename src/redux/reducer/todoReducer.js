@@ -3,6 +3,7 @@ import {
 	ACTION_LOAD_TODO, 
 	ACTION_ADD_TODO, 
 	ACTION_SEARCH_TODO,
+	ACTION_UPDATE_TODO,
 } from '../constants';
 import { todos } from '../../api/data';
 
@@ -70,13 +71,33 @@ export default (prevState=initialState, action) => {
 		}
 		case ACTION_SEARCH_TODO: {
 			const { query } = action.payload;
-			const { todos, reset } = prevState;
+			const { todos } = prevState;
 			const searchedTodos = !query ? todos : todos.filter( todo => todo.description.toLowerCase().includes(query.toLowerCase()));
 			return {
 				...prevState,
 				visibleTodoIds: searchedTodos.map(todo => todo.id),
 				visibleTodos: [...searchedTodos],
-				reset: !reset,
+			}
+		}
+		case ACTION_UPDATE_TODO: {
+			const { id, values } = action.payload;
+			const { todos, visibleTodoIds } = prevState;
+			const updatedTodos = todos.map(todo => {
+				if (todo.id === id){
+					return {
+						...todo,
+						...values,
+					}
+				}
+				else{
+					return todo;
+				}
+			});
+			const visibleTodos = updatedTodos.filter( todo => visibleTodoIds.includes(todo.id));
+			return {
+				...prevState,
+				todos: updatedTodos, 
+				visibleTodos,
 			}
 		}
 		default:

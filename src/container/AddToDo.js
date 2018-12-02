@@ -14,7 +14,7 @@ const addTodo = (dispatch) => e => {
 
 	let priorityEle = formTodo.priority;
 	let priority = priorityEle.value.trim();
-	priorityEle.value = 'normal';
+	priorityEle.value = '-';
 
 	const todoValues = {description, priority, tags};
 	dispatch(
@@ -23,7 +23,6 @@ const addTodo = (dispatch) => e => {
 	dispatch(
 		tagAction.actionAddTag(tags)
 	)
-	tags = [];
 }
 
 const mapStateToProps = state => {

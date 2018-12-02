@@ -1,6 +1,6 @@
 import React from 'react';
-import Todo from './Todo';
-export default ({ visibleTodos }) => {
+import Todo from './Todo/';
+export default ({ visibleTodos, dispatch }) => {
 	return (
 		<div className="table-responsive">
 			<table className="table table-striped table-hover">
@@ -16,7 +16,7 @@ export default ({ visibleTodos }) => {
 				</thead>
 				<tbody>
 					{
-						visibleTodos.map(todo => <Todo key={todo.id}  {...todo}/>)
+						visibleTodos.map(todo => <Todo key={todo.id} dispatch={dispatch} {...todo}/>)
 					}
 				</tbody>
 			</table>

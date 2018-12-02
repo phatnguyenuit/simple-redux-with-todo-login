@@ -4,6 +4,7 @@ import {
 	ACTION_ADD_TODO,
 	ACTION_SEARCH_TODO,
 	ACTION_LOAD_TODO,
+	ACTION_UPDATE_TODO,
 } from '../constants'
 
 //Fake user
@@ -41,6 +42,16 @@ export const actionLoadTodo = ( user_id ) => {
 		type: ACTION_LOAD_TODO,
 		payload: {
 			user_id
+		}
+	}
+}
+
+export const actionUpdateTodo = ( id, values ) => {
+	return {
+		type: ACTION_UPDATE_TODO,
+		payload: {
+			id,
+			values,
 		}
 	}
 }
