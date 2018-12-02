@@ -57,8 +57,12 @@ span.remove::after {
 
 .tags .auto-complete {
 	margin-top: 5px;
-	max-height: 100px;
+	max-height: 60px;
 	overflow-y: scroll;
+}
+
+.tags .auto-complete::before {
+	white-space: pre-line;
 }
 
 .item-suggested.selected {

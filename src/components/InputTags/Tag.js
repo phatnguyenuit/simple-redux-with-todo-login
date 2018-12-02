@@ -1,10 +1,10 @@
 import React from 'react';
 
 export default (props) => {
-	const { value, handleDelete } = props;
+	const { value, onDelete } = props;
 	return (
 		<span className="badge badge-pill badge-success mr-1">{value}
-			<span className="remove" onClick={handleDelete}/>
+			<span className="remove" onClick={onDelete}/>
 		</span>
 	)
 };

@@ -8,34 +8,21 @@ class InputTags extends Component {
 		this.state = {
 			tags: [],
 			value: '',
-			suggestedTags: [],
 		}
 	}
+	
+	componentDidUpdate() {
+		const { tags, value } = this.state;
+		const values = tags.length ? tags : [value];
+		this.props.setTagValues(values);
+	}
 
-	handleKeyDown = e => {
-		const { tags } = this.state;
-		const inputValue = e.target.value;
-		switch (e.keyCode) {
-			// enter
-			case 13: {
-				this.setState({
-					value: '',
-					tags: [...tags, inputValue],
-					suggestedTags: [],
-				});
-				break;
-			}
-			// backspace
-			case 8: {
-				if (inputValue === '') {
-					this.removeLastestItem();
-				}
-				break;
-			}
-			default: {
-				this.handleChange(e);
-				break;
-			}
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.reset !== this.props.reset) {
+			this.setState({
+				value: '',
+				tags: [],
+			});
 		}
 	}
 
@@ -46,21 +33,60 @@ class InputTags extends Component {
 			tags: tags.slice(0, -1)
 		})
 	}
-
-	handleChange = e => {
-		const inputValue = e.target.value;
-		const {dataSource = []} = this.props;
-		let newSuggestedTags = [];
-		if ( inputValue ) {
-			newSuggestedTags = dataSource.filter( tag => tag.includes(inputValue));
+	
+	// Event Handlers
+	handleClickTags = e => {
+		// Make the within input focus
+		const childInput = e.target.firstElementChild;
+		if ( childInput ) {
+			childInput.focus();
 		}
+	}
+
+	hanldeInputEvents = e => {
+		switch (e.type) {
+			case 'change':
+				return this.handleInputChange(e);
+			case 'keydown': {
+				return this.handleInputKeyDown(e);
+			}
+			default:
+				break;
+		}
+	}
+	handleInputKeyDown = e => {
+		const { tags } = this.state;
+		const inputValue = e.target.value;
+		switch (e.key) {
+			case "Enter": {
+				this.setState({
+					value: '',
+					tags: [...tags, inputValue],
+					suggestedTags: [],
+				});
+				break;
+			}
+			case "Backspace": {
+				if (inputValue === '') {
+					this.removeLastestItem();
+				}
+				break;
+			}
+			default: {
+				this.handleInputChange(e);
+				break;
+			}
+		}
+	}
+
+	handleInputChange = e => {
+		const inputValue = e.target.value;
 		this.setState({
 			value: inputValue,
-			suggestedTags: newSuggestedTags
 		});
 	}
 
-	handleDelete = tag => e => {
+	handleDeleteTag = tag => e => {
 		e.preventDefault();
 		const { tags } = this.state;
 		const deleteIndex = tags.indexOf(tag);
@@ -74,66 +100,24 @@ class InputTags extends Component {
 		}
 	}
 
-	handleAutoComplete = tag => e => {
-		const { tags } = this.state;
-		if (tags.indexOf(tag) < 0) {
-			this.setState({
-				tags: [...tags, tag],
-				suggestedTags: [],
-				value: '',
-			})
-		}
-		else {
-			this.setState({
-				suggestedTags: [],
-				value: '',
-			})
-		}
-	}
-
-	handleFocus = e => {
-		const childInput = e.target.firstElementChild;
-		if ( childInput ) {
-			childInput.focus();
-		}
-	}
-
 	render() {
-		const { value, tags, suggestedTags } = this.state;
+		const { value, tags } = this.state;
 		return (
-			<div className="tags" onClick={this.handleFocus}>
+			<div className="tags" onClick={this.handleClickTags}>
 				<div className="input-tags">
 				{
 					tags.map(tag =>
 						<Tag key={tag}
 							value={tag}
-							handleDelete={this.handleDelete(tag)}
+							onDelete={this.handleDeleteTag(tag)}
 						/>
 					)
 				}
 				<input value={value} 
-					onChange={this.handleChange} 
-					onKeyDown={this.handleKeyDown} 
+					onChange={this.hanldeInputEvents} 
+					onKeyDown={this.hanldeInputEvents} 
 				/>
 				</div>
-				{suggestedTags && 
-					<ul className="auto-complete list-unstyled mt-2" id="suggestion">
-					{
-						suggestedTags.map((tag, index) => {
-							let className = "item-suggested";
-							if (index === 0) {
-								className += " selected";
-							}
-							return (
-								<li key={"auto-" + tag} className={className} id={"auto-" + tag}
-									onClick={this.handleAutoComplete(tag)}>{tag}
-								</li>
-							)
-
-						})
-					}
-					</ul>
-				}
 			</div>
 		)
 	}

@@ -1,8 +1,10 @@
 /* Part 4: Tag Reducer */
+import { uniqueId } from 'lodash';
 import { 
 	ACTION_TOGGLE_TAG,
+	ACTION_ADD_TAG,
 } from '../constants';
-import { tags } from '../../api/data';
+import { tags, prefixIdTag } from '../../api/data';
 
 const initialState = {
 	tags,
@@ -25,6 +27,24 @@ export default ( prevState=initialState, action ) => {
 				activeTags: updatedActiveTags,
 				tags: updatedTags
 			}
+		}
+		case ACTION_ADD_TAG: {
+			const prevTags = [...prevState.tags];
+			const { tags } = action.payload;
+			const uniqueTags = tags.filter(tag => prevTags.every(t => t.name !== tag))
+			const toAddTags = uniqueTags.map( tag => ({
+				id: uniqueId(prefixIdTag),
+				name: tag,
+				active: false
+			}));
+			return {
+				...prevState,
+				tags: [
+					...prevTags,
+					...toAddTags,
+				]
+			}
+
 		}
 		default:
 			return {

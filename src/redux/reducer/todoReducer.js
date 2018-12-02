@@ -17,6 +17,7 @@ const initialState = {
 	todos: [],
 	visibleTodos: [],
 	error: '',
+	reset: false,
 }
 
 export default (prevState=initialState, action) => {
@@ -34,6 +35,7 @@ export default (prevState=initialState, action) => {
 		}
 		case ACTION_ADD_TODO:{
 			const { todo } = action.payload;
+			const { reset } = prevState;
 			if ( todo ) {
 				const { todoIds, todos, visibleTodoIds, visibleTodos } = prevState;
 				$('#addTodoModal').modal('hide');
@@ -56,6 +58,7 @@ export default (prevState=initialState, action) => {
 						todo
 					],
 					error: '',
+					reset: !reset,
 				}
 			}
 			else {
@@ -67,17 +70,18 @@ export default (prevState=initialState, action) => {
 		}
 		case ACTION_SEARCH_TODO: {
 			const { query } = action.payload;
-			const { todos } = prevState;
+			const { todos, reset } = prevState;
 			const searchedTodos = !query ? todos : todos.filter( todo => todo.description.toLowerCase().includes(query.toLowerCase()));
 			return {
 				...prevState,
 				visibleTodoIds: searchedTodos.map(todo => todo.id),
 				visibleTodos: [...searchedTodos],
+				reset: !reset,
 			}
 		}
 		default:
 			return {
-				...prevState
+				...prevState,
 			}
 	}
 }

@@ -9,15 +9,14 @@ import {
 //Fake user
 import { prefixIdTodo } from '../../api/data';
 
-export const actionAddTodo = ({ description, ...rest }) => {
-	console.log(rest);
+export const actionAddTodo = ( values ) => {
+	const { description } = values;
 	let todo = false;
 	if (description) {
 		todo = {
 			id: uniqueId(prefixIdTodo),
-			description,
 			status: 'not_start',
-			tags: []
+			...values
 		}
 	}
 	return {

@@ -1,21 +1,13 @@
 import React from 'react';
 import { Icon } from 'react-fa';
 import { capitalize, uniqueId } from 'lodash';
-import { prefixIdTodo, filters, tags } from '../api/data';
+import { prefixIdTodo, filters } from '../api/data';
 
 
 const filterDict = filters.reduce(
 	(fd, filter) => ({
 		...fd,
 		[filter.name]: {icon: filter.icon, displayStr: filter.display}
-	}),
-	{}
-);
-
-const tagDict = tags.reduce(
-	(td, tag) => ({
-		...td,
-		[tag.name]: tag.display
 	}),
 	{}
 );
@@ -38,7 +30,12 @@ export default (props) => {
 			<th scope="row">{sequence}</th>
 			<td>{description}</td>
 			<td>{
-				tags.map(tag => <span className="text-left badge badge-pill badge-secondary mr-1" key={uniqueId(tag)}>{tagDict[tag]}</span>)
+				tags.map(tag => 
+					<span 
+						className="text-left badge badge-pill badge-secondary mr-1" 
+						key={uniqueId(tag)}>{tag}
+					</span>
+				)
 			}</td>
 			<td className={className}>{capitalize(priority).replace('_', ' ')}</td>
 			<td>

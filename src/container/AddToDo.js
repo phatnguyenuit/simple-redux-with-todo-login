@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { todoAction } from '../redux/action';
+import { todoAction, tagAction } from '../redux/action';
 import InputTags from '../components/InputTags/';
 
-const handleAddTodo = (dispatch) => e => {
+var tags = [];
+const addTodo = (dispatch) => e => {
 	e.preventDefault();
 	let formTodo = document.forms.namedItem('addTodoForm');
 
@@ -13,21 +14,31 @@ const handleAddTodo = (dispatch) => e => {
 
 	let priorityEle = formTodo.priority;
 	let priority = priorityEle.value.trim();
-	priorityEle.value = '';
+	priorityEle.value = 'normal';
 
+	const todoValues = {description, priority, tags};
 	dispatch(
-		todoAction.actionAddTodo({description, priority})
+		todoAction.actionAddTodo(todoValues)
 	);
+	dispatch(
+		tagAction.actionAddTag(tags)
+	)
+	tags = [];
 }
 
 const mapStateToProps = state => {
-	const { error } = state.todoReducer;
+	const { error, reset } = state.todoReducer;
 	return {
 		error,
+		reset,
 	}
 }
 
-const AddToDo = ({ dispatch, error }) => {
+const setTagValues = () => ( tagValues ) => {
+	tags = tagValues;
+}
+
+const AddToDo = ({ dispatch, error, reset }) => {
 	return (
 		<>
 			<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#addTodoModal">Create new todo</button>
@@ -60,7 +71,7 @@ const AddToDo = ({ dispatch, error }) => {
 								</div>
 								<div className="form-group text-left">
 									<label htmlFor="tags" className="col-form-label text-left">Tags:</label>
-									<InputTags dataSource={['test', 'tau', 'toi']}/>
+									<InputTags setTagValues={setTagValues()} reset={reset}/>
 								</div>
 								{error &&
 									<div className="alert alert-danger fade show" role="alert">
@@ -71,7 +82,7 @@ const AddToDo = ({ dispatch, error }) => {
 						</div>
 						<div className="modal-footer">
 							<button type="button" className="btn btn-primary" 
-								onClick={handleAddTodo(dispatch)}
+								onClick={addTodo(dispatch)}
 							>Add</button>
 							<button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
 						</div>

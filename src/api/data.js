@@ -46,36 +46,28 @@ export const todos = [
 	},
 ]
 
-
+export const prefixIdTag = 'TAG_';
 export const tags = [
 	{
-		id: 1,
-		icon: 'tag_icon',
+		id: uniqueId(prefixIdTag),
 		name: 'frontend',
-		display: 'Frontend',
 		active: false,
 	},
 	
 	{
-		id: 2,
-		icon: 'tag_icon',
+		id: uniqueId(prefixIdTag),
 		name: 'backend',
-		display: 'Backend',
 		active: false,
 	},
 	{
-		id: 3,
-		icon: 'tag_icon',
+		id: uniqueId(prefixIdTag),
 		name: 'api',
-		display: 'API',
 		active: false,
 	},
 	
 	{
-		id: 4,
-		icon: 'tag_icon',
+		id: uniqueId(prefixIdTag),
 		name: 'issue',
-		display: 'Issue',
 		active: false,
 	},
 
