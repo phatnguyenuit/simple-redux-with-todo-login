@@ -2,6 +2,7 @@
   "name": "simple-redux-with-todo-login",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://phatnguyenuit.github.io/simple-redux-with-todo-login",
   "dependencies": {
     "bootstrap": "^4.1.3",
     "connected-react-router": "^5.0.1",
