@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/simple-redux-with-todo-login/static/media/fontawesome-webfont.af7ae505.woff2"
   },
   {
-    "revision": "9cc9b111151775b07340",
+    "revision": "78e55dd80fe4c959da06",
     "url": "/simple-redux-with-todo-login/static/css/main.957d3a71.chunk.css"
   },
   {
@@ -16,16 +16,16 @@ self.__precacheManifest = [
     "url": "/simple-redux-with-todo-login/static/media/fontawesome-webfont.912ec66d.svg"
   },
   {
-    "revision": "d52bc0a6c66bd948cfd1",
-    "url": "/simple-redux-with-todo-login/static/js/2.cf8129ef.chunk.js"
+    "revision": "0d7874c129ed3f2abd54",
+    "url": "/simple-redux-with-todo-login/static/js/2.c7602882.chunk.js"
   },
   {
     "revision": "8868fa3b5de291ec67e7ee41be21bbe3",
     "url": "/simple-redux-with-todo-login/static/media/null_icon.8868fa3b.png"
   },
   {
-    "revision": "9cc9b111151775b07340",
-    "url": "/simple-redux-with-todo-login/static/js/main.0830ba36.chunk.js"
+    "revision": "78e55dd80fe4c959da06",
+    "url": "/simple-redux-with-todo-login/static/js/main.e3d6d750.chunk.js"
   },
   {
     "revision": "fee66e712a8a08eef5805a46892932ad",
@@ -40,11 +40,11 @@ self.__precacheManifest = [
     "url": "/simple-redux-with-todo-login/static/media/fontawesome-webfont.b06871f2.ttf"
   },
   {
-    "revision": "d52bc0a6c66bd948cfd1",
+    "revision": "0d7874c129ed3f2abd54",
     "url": "/simple-redux-with-todo-login/static/css/2.ad58fa1a.chunk.css"
   },
   {
-    "revision": "4fa726d896692d8c7f3c67227f33014b",
+    "revision": "b2762f446d17e2130982b6458cfb58cb",
     "url": "/simple-redux-with-todo-login/index.html"
   }
 ];
