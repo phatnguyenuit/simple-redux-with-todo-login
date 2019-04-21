@@ -8,6 +8,7 @@ import {
 } from "../constants";
 
 import { actionLoadTodo } from "./todoAction";
+import { paths } from "../../config";
 import { push } from "connected-react-router";
 import { users } from "../../api/data";
 
@@ -43,8 +44,8 @@ export const actionLogin = (login, password) => dispatch => {
       })
         .then(loginUser => {
           dispatch(actionLoginSuccess(loginUser));
-          dispatch(push("/"));
           dispatch(actionLoadTodo(loginUser.id));
+          dispatch(push(`${paths.home}`));
         })
         .catch(error => {
           dispatch(actionLoginFail(error.message));

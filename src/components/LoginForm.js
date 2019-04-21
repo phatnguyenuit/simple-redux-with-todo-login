@@ -17,6 +17,9 @@ export default ({ dispatch, error, isLoading }) => {
         actionSubmitLogin(e, dispatch);
       }}
     >
+      <p>
+        Use account (<code>phatnguyen/phatnguyen</code>)
+      </p>
       <div className="form-group">
         <label htmlFor="user_id">User Name:</label>
         <input className="form-control" name="userName" />

@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import AboutPage from "../page/AboutPage";
 import LoginPage from "../page/LoginPage";
@@ -7,37 +7,34 @@ import PageNotFound from "../page/PageNotFound";
 import React from "react";
 import TodoPage from "../page/TodoPage";
 import { connect } from "react-redux";
+import { paths } from "../config";
 
 const App = ({ dispatch, user }) => {
   return (
     <>
       <NavBar user={user} dispatch={dispatch} />
       <div className="container-fluid" role="main">
-        <BrowserRouter>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={props => {
-                const { location } = props;
-                if (user) return <TodoPage />;
-                return (
-                  <Redirect
-                    to={{
-                      pathname: "/login",
-                      state: {
-                        from: location
-                      }
-                    }}
-                  />
-                );
-              }}
-            />
-            <Route path="/login" component={LoginPage} exact />
-            <Route path="/about" component={AboutPage} exact />
-            <Route component={PageNotFound} />
-          </Switch>
-        </BrowserRouter>
+        <Switch>
+          <Route
+            exact
+            path={paths.home}
+            render={props => {
+              console.log("test", user);
+              if (user) return <TodoPage />;
+              return (
+                <Redirect
+                  to={{
+                    pathname: `${paths.login}`
+                  }}
+                  push={true}
+                />
+              );
+            }}
+          />
+          <Route path={paths.login} component={LoginPage} exact />
+          <Route path={paths.about} component={AboutPage} exact />
+          <Route component={PageNotFound} />
+        </Switch>
       </div>
       <footer id="footer">
         <div className="container">Copyright Phat Nguyen</div>
